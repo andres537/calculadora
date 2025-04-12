@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
+    <style>
+        body {
+            background-color: #8d7373;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+         
+     
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+        }
+        input[type="text"] {
+            width: 200px;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #ccc;
+        }
+        button:active {
+            background-color: #aaa;
+        }
+        button:focus {
+            outline: none;
+        }
+        button:focus-visible {
+            outline: 2px solid #000;
+        }
+        button:disabled {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+        }
+        button:disabled:hover {
+            background-color: #f0f0f0;
+        }
+        button:disabled:active {
+            background-color: #f0f0f0;
+        }
+        button:disabled:focus {
+            outline: none;
+        }
+        button:disabled:focus-visible {
+            outline: none;
+        }
+        button:disabled:focus-visible:hover {
+            background-color: #f0f0f0;
+        }
+        input[type="text"], input[type="number"] {
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #555;
+}
+/* Estilo de los botones */
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ccc;
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: #aaa;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Botón de limpiar */
+button.limpiar {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+button.limpiar:hover {
+    background-color: #e60000;
+}
+
+/* Botón de calcular */
+button.calcular {
+    background-color: #4caf50;
+    color: white;
+}
+
+button.calcular:hover {
+    background-color: #45a049;
+}
+
+/* Estilo del resultado */
+p#resultadoFinal {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-top: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+/* Estilo para los botones dentro de .botones2 */
+.botones2 {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaciado entre los botones */
+    margin-top: 20px;
+}
+
+.botones2 button {
+    width: 150px; /* Ancho de los botones */
+    height: 50px; /* Alto de los botones */
+    font-size: 16px; /* Tamaño de la letra */
+    font-weight: bold; /* Negrita para el texto */
+    text-align: center; /* Centrar el texto dentro del botón */
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50; /* Color de fondo */
+    color: white; /* Color del texto */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botones2 button:hover {
+    background-color: #45a049; /* Color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.botones2 button:active {
+    background-color: #3e8e41; /* Color al hacer clic */
+}
+        
+    </style>
+    <h1>Calculadora</h1>
+    <input type="text" name="" id="pantalla">
+    <br>
+    <button onclick="mostrar('7')">7</button>
+    <button onclick="mostrar('8')">8</button>
+    <button onclick="mostrar('9')">9</button>
+    <button onclick="mostrar('+')">+</button>
+    <br>
+    <button onclick="mostrar('4')">4</button>
+    <button onclick="mostrar('5')">5</button>
+    <button onclick="mostrar('6')">6</button>
+    <button onclick="mostrar('-')">-</button>
+    <br>
+    <button onclick="mostrar('1')">1</button>
+    <button onclick="mostrar('2')">2</button>
+    <button onclick="mostrar('3')">3</button>
+    <button onclick="mostrar('*')">*</button>
+    <br>
+    <button onclick="mostrar('0')">0</button>
+    <button onclick="limpiar('C')">C</button>
+    <button onclick="calcular('=')">=</button>
+    <button onclick="mostrar('/')">/</button>
+<br>
+<input type="text" id="nombre" placeholder="ingresa tu nombre">
+<input type="text" id="cedula" placeholder="ingresa tu cedula">
+<input type="text" id="edad" placeholder="ingresa tu edad">
+<input type="text" id="telefono" placeholder="ingresa tu telefono">
+<br>
+<h2>Consulta el Peso y la Altura</h2>
+<input type="number" id="peso" placeholder="Ingresa tu peso (kg)">
+<input type="number" id="altura" placeholder="Ingresa tu altura (m)">
+<br>
+<div class="botones2">
+<button onclick="calcularDatos()">Calcular Datos</button>
+<button onclick="limpiarCampos()">Limpiar Campos</button>
+</div>
+<p id="resultadoFinal"></p>
+
+    <script src="calculadora.js"></script>
+</body>
+</html>
